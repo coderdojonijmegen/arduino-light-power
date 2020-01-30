@@ -1,19 +1,17 @@
 Benodigdheden
 =============
 
-Voor het gebruik van deze template moeten de volgende programma's geïnstalleerd zijn:
+Voor deze opdracht hebben we de volgende **hardware** nodig:
 
- - Python 2.7/3.6
- - Sphinx
- - sphinx-rtd-theme
+* Arduino
+* Ledjes
+* `Jumper wires`
+* licht sensor
+* Weerstanden
 
-Installatie onder Ubuntu:
+Het makkelijkste is als je een mentor om hulp vraagt, die kan in een keer
+alles bij elkaar zoeken voor je.
 
-.. code-block:: bash
-
-   apt install python3 python3-pip
-   git clone https://github.com/coderdojonijmegen/instructie_template.git
-   cd instructie_template
-   pip3 install -r requirements.txt
-
-Intellij ondersteunt color-coding en code-completion voor reStructuredText middels een plugin.
+En daarnaast gaan we in de **Arduino IDE** onze software ontwikkelen.
+Als je dit programma nog niet hebt geïnstalleerd kun je her hier downloaden:
+`Arduino <https://www.arduino.cc/en/main/software/>`_

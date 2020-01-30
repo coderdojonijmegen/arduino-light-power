@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 
-project = 'instructie template'
+project = 'Arduino licht sterkte'
 
 from datetime import datetime
 current_year = datetime.now().year

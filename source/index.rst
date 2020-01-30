@@ -1,4 +1,4 @@
-instructie template
+Arduino licht sterkte
 ===================
 
 .. toctree::
@@ -7,8 +7,6 @@ instructie template
 
    introductie
    benodigdheden
-   templategebruiken
-   templateaanpassen
-   conclusie
-   vervolg
+   hardware
+   programmeren
    licentie
