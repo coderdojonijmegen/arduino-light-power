@@ -1,0 +1,29 @@
+Led aansluiten
+========
+
+De ledjes die wij gebruiken hebben twee pinnen, een korte en een lange. 
+Voor tijdens het aansluiten moet je goed onthouden dat de lange pin **positief** is, en de korte **negatief**.
+
+.. image:: imgs/led.png
+
+Daarnaast moeten we bij het aansluiten ook altijd een weerstand plaatsen tussen een van de pootjes van de led en de arduino.
+Dit zorgt ervoor dat het ledje niet teveel stroom krijgt. 
+
+Als je geen weerstand gebruikt dan is het mogelijk dat het lampje doorbrand en daardoor werkt hij niet meer!
+
+Een ledje aansluiten
+--------------------
+
+Kun jij het volgende plaatje namaken?
+
+
+.. image:: imgs/arduino-led-resistor.png
+
+
+Alle ledjes
+-----------
+
+Kun jij nu alle 5 de ledjes aansluiten? Zie hier een voorbeeld:
+
+
+.. image:: imgs/arduino-led-full.png

@@ -1,0 +1,10 @@
+Licht sensor aansluiten
+=======================
+
+De lichtsensor heeft net als de led twee pootjes. Hierbij maakt het echter niet uit hoe je hem aansluit, als het ene pootje maar negatief is, en de andere positief.
+Je moet hierij wel opletten dat we een pin van de arduino gebruiken die  ANALOOG is. We gebruiken namelijk een sensor, die we analoog gaan uitlezen.
+Een lichtsensor is eigenlijk een variabele weerstand, hoe minder licht, hoe hoger de weerstand. We gaan deze weerstand uitlezen met de arduino, en hiermee wewten we hoeveel licht de sensor ontvangt.
+
+Als het goed is heb je nu het volgende:
+
+--plaatje--
