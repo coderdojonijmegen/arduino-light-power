@@ -54,7 +54,7 @@ Deze initialisatie code zetten we in het `setup` block.
     }
 
 We moeten voor deze `pinMode` natuurlijk wel onze pinnen definieren.
-We kunnen dit per pin doen, dat gaat als volgt in de **loop** functie:
+We kunnen dit per pin doen, dat gaat als volgt in de **setup** functie:
 
 .. code:: arduino
 
