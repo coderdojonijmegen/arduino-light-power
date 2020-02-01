@@ -9,7 +9,7 @@ Voor tijdens het aansluiten moet je goed onthouden dat de lange pin **positief**
 .. image:: imgs/led.png
 
 Daarnaast moeten we bij het aansluiten ook altijd een weerstand plaatsen tussen een van de pootjes van de led en de arduino.
-Dit zorgt ervoor dat het ledje niet teveel stroom krijgt. 
+Dit zorgt ervoor dat het ledje niet teveel stroom krijgt. De weerstand is een 100 Ohm weerstand!
 
 Als je geen weerstand gebruikt dan is het mogelijk dat het lampje doorbrand en daardoor werkt hij niet meer!
 
@@ -51,6 +51,7 @@ Om de lichtsensor aan te sluiten moet je het volgende namaken:
 
 .. image:: imgs/arduino-full-with-ldr.png
 
+De weerstand is een 100k Ohm weerstand!
 
 Resultaat
 ---------
