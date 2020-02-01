@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="nl" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="nl" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Programmeren &mdash; Arduino licht sterkte  documentatie</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/coderdojo.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Zoeken" href="search.html" />
+    <link rel="next" title="Licentie" href="licentie.html" />
+    <link rel="prev" title="Hardware" href="hardware.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Arduino licht sterkte
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Inhoud:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introductie.html">Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benodigdheden.html">Benodigdheden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Programmeren</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#arduino">Arduino</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#initialisatie">Initialisatie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geadvanceerd-met-arrays">Geadvanceerd met arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vergeet-de-lichtsensor-niet">Vergeet de lichtsensor niet!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#voortgang-tot-nu-toe">Voortgang tot nu toe:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sensor-uitlezen">Sensor uitlezen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resultaat">Resultaat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="licentie.html">Licentie</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Arduino licht sterkte</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Programmeren</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/programmeren.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="programmeren">
+<h1>Programmeren<a class="headerlink" href="#programmeren" title="Permalink naar deze titel">¶</a></h1>
+<p>Nu we de hardware hebben aangesloten kunnen we ons programma gaan schrijven.
+We gaan hierbij wat gevorderde technieken voor gebruiken! Dit is echter niet nodig,
+en je kan het ook simpeler aanpakken. Als je dat liever doet, nadat het bijvoorbeeld te lastig is,
+vraag het dan aan een van de mentoren.</p>
+<div class="section" id="arduino">
+<h2>Arduino<a class="headerlink" href="#arduino" title="Permalink naar deze titel">¶</a></h2>
+<p>Een arduino programma ziet er in de basis altijd hetzelfde uit, het heeft een <strong>setup</strong> en een <strong>loop</strong> methode.</p>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="kr">void</span> <span class="nb">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//Dit wordt 1x aangeroepen, als de arduino start.</span>
+<span class="p">}</span>
+
+<span class="kr">void</span> <span class="nb">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//Dit wordt continu aangeroepen, tot je de stroom er uit haalt :^).</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Om te beginnen kun je een nieuwe <cite>schets</cite> aanmaken in het arduino programma.
+Hier kun je vervolgens in gaan programmeren.</p>
+</div>
+<div class="section" id="initialisatie">
+<h2>Initialisatie<a class="headerlink" href="#initialisatie" title="Permalink naar deze titel">¶</a></h2>
+<p>In onze arduino omgeving moeten we allereest de verschillende pinnen initialiseren.
+Ze kunnen of een <strong>input</strong> zijn, of een <strong>output</strong>.</p>
+<p>Een input is bijvoorbeeld een <em>sensor</em>, want we lezen hier een waarde van uit.
+Een output is bijvoorbeeld een <em>led</em>, we zitten dit aan.</p>
+<p>Om een pin te initialiseren gebruiken we de volgende methode:</p>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="c1">//Dit is of INPUT, of OUTPUT</span>
+<span class="nf">pinMode</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="kr">INPUT</span><span class="p">);</span>
+<span class="nf">pinMode</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="kr">OUTPUT</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>pin is de betreffende pin, dit is dus bijvoorbeeld 10, 11 of 12.
+Maar dit kan ook A1 of A2 zijn, zoals ze aangegeven worden op het arduino bord zelf.</p>
+<p>Deze initialisatie code zetten we in het <cite>setup</cite> block.</p>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="kr">void</span> <span class="nb">setup</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We moeten voor deze <cite>pinMode</cite> natuurlijk wel onze pinnen definieren.
+We kunnen dit per pin doen, dat gaat als volgt in de <strong>setup</strong> functie:</p>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="kr">int</span> <span class="n">pin1</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span>
+<span class="kr">int</span> <span class="n">pin2</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="kr">int</span> <span class="n">pin3</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>
+<span class="c1">//En zo voort..</span>
+
+
+<span class="kr">void</span> <span class="nb">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">pinMode</span><span class="p">(</span><span class="n">pin1</span><span class="p">,</span> <span class="kr">OUTPUT</span><span class="p">);</span>
+    <span class="nf">pinMode</span><span class="p">(</span><span class="n">pin2</span><span class="p">,</span> <span class="kr">OUTPUT</span><span class="p">);</span>
+    <span class="nf">pinMode</span><span class="p">(</span><span class="n">pin3</span><span class="p">,</span> <span class="kr">OUTPUT</span><span class="p">);</span>
+    <span class="c1">//En zo voort..</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="geadvanceerd-met-arrays">
+<h2>Geadvanceerd met arrays<a class="headerlink" href="#geadvanceerd-met-arrays" title="Permalink naar deze titel">¶</a></h2>
+<p>Maar we kunnen ook gebruik maken van een andere type variabele, de <strong>array</strong>.
+Een <strong>array</strong> is een lijst van bepaalde types.
+Hier kunnen we dus bijvoorbeeld gebruik van maken om meerdere pinnen in een keer te initialiseren.</p>
+<p>Een array definieer je met <cite>[ ]</cite> (blokhaken). Dit ziet er zo uit:</p>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="kr">int</span> <span class="n">pins</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>Hierbij moet je in de blokhaken een getal meegeven, dit is de grootte van de lijst.
+Om de lijst te initialiseren, en er dus waardes in te zetten, kunnen we gebruik maken van de volgende constructie:</p>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="kr">int</span> <span class="n">pins</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>Nu hebben we een lijstje met naam <strong>pins</strong>, waar 3 getallen in zitten: 11, 12 en 13.</p>
+<p>Om een getal uit een <strong>array</strong> te halen gebruik je blokhaken met een <strong>index</strong> getal (<cite>[ ]</cite>).
+Deze index bepaald de plek waar je de waarde van op haalt. <strong>Let hierbij op</strong> dat arrays op 0 beginnen.
+Dus het eerste element zit op plaats 0 :</p>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="kr">int</span> <span class="n">pin</span> <span class="o">=</span> <span class="n">pins</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">//Dit levert dus 11 op!</span>
+</pre></div>
+</div>
+<p>Om nu alle pinnen in een efficiente manier te initialiseren kunnen we gebruik maken van een loop:</p>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="kr">int</span> <span class="n">pins</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">};</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kr">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">pinMode</span><span class="p">(</span><span class="n">pins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="kr">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="vergeet-de-lichtsensor-niet">
+<h2>Vergeet de lichtsensor niet!<a class="headerlink" href="#vergeet-de-lichtsensor-niet" title="Permalink naar deze titel">¶</a></h2>
+<p>We moeten de lichtsensor pin natuurlijk als <strong>input</strong> initialiseren.
+Dit doen we als volgt:</p>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="kr">int</span> <span class="n">lichtPin</span> <span class="o">=</span> <span class="n">A1</span><span class="p">;</span>
+
+<span class="kr">void</span> <span class="nb">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">pinMode</span><span class="p">(</span><span class="n">lichtPin</span><span class="p">,</span> <span class="kr">INPUT</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="voortgang-tot-nu-toe">
+<h2>Voortgang tot nu toe:<a class="headerlink" href="#voortgang-tot-nu-toe" title="Permalink naar deze titel">¶</a></h2>
+<p>Tot nu toe hebben we de volgende sketch:</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>klik om voorbeeld te tonen</p>
+</div>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="kr">int</span> <span class="n">totaalAantalLedjes</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kr">int</span> <span class="n">ledPins</span><span class="p">[</span><span class="n">totaalAantalLedjes</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">};</span>
+<span class="kr">int</span> <span class="n">lichtPin</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+
+<span class="kr">void</span> <span class="nb">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kr">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">totaalAantalLedjes</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">pinMode</span><span class="p">(</span><span class="n">ledPins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="kr">OUTPUT</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nf">pinMode</span><span class="p">(</span><span class="n">lichtPin</span><span class="p">,</span> <span class="kr">INPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">void</span> <span class="nb">loop</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="sensor-uitlezen">
+<h2>Sensor uitlezen<a class="headerlink" href="#sensor-uitlezen" title="Permalink naar deze titel">¶</a></h2>
+<p>Weet je nog dat de lichtsensor een <strong>analoge sensor</strong> is?
+We kunnen deze analoge waarde uitlezen met de <strong>analogRead()</strong> functie. Dit doen we als volgt:</p>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="kr">void</span> <span class="nb">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">int</span> <span class="n">sensorWaarde</span> <span class="o">=</span> <span class="nf">analogRead</span><span class="p">(</span><span class="n">lichtPin</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Deze waarde zit tussen de 0 en de 1023. Dit komt door de <strong>analog to digital</strong> converter in de arduino.
+Hoe dit precies werkt is een complex verhaal, maar een mentor kan dit altijd uitleggen!</p>
+<p>We willen echter dat we deze waarde kunnen gebruiken om een bepaald aantal ledjes aan te zetten, hierbij is 1023 natuurlijk te hoog!</p>
+</div>
+<div class="section" id="resultaat">
+<h2>Resultaat<a class="headerlink" href="#resultaat" title="Permalink naar deze titel">¶</a></h2>
+<p>Dit is nu het resultaat:</p>
+<ul class="simple">
+<li><p>We initialiseren al onze pinnen;</p></li>
+<li><p>We lezen de sensor uit;</p></li>
+<li><p>We zorgen dat we dit getal tussen 0 en 5 zetten;</p></li>
+<li><p>We zetten de correcte hoeveelheid ledjes aan, en de andere uit.</p></li>
+</ul>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p>klik om voorbeeld te tonen</p>
+</div>
+<div class="highlight-arduino notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="kr">int</span> <span class="n">totalLedjes</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kr">int</span> <span class="n">ledPins</span><span class="p">[</span><span class="n">totalLedjes</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">};</span>
+<span class="kr">int</span> <span class="n">lichtPin</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+
+<span class="kr">void</span> <span class="nb">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kr">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">totalLedjes</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">pinMode</span><span class="p">(</span><span class="n">ledPins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="kr">OUTPUT</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nf">pinMode</span><span class="p">(</span><span class="n">lichtPin</span><span class="p">,</span> <span class="kr">INPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kr">void</span> <span class="nb">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kr">int</span> <span class="n">sensorWaarde</span> <span class="o">=</span> <span class="nf">analogRead</span><span class="p">(</span><span class="n">lichtPin</span><span class="p">);</span>
+    <span class="kr">int</span> <span class="n">hoeveelheidLedjes</span> <span class="o">=</span> <span class="nf">map</span><span class="p">(</span><span class="n">sensorWaarde</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1023</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">totalLedjes</span><span class="p">);</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kr">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">hoeveelheidLedjes</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">digitalWrite</span><span class="p">(</span><span class="n">ledPins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="kr">HIGH</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kr">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">hoeveelheidLedjes</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">totalLedjes</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">digitalWrite</span><span class="p">(</span><span class="n">ledPins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="kr">LOW</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="licentie.html" class="btn btn-neutral float-right" title="Licentie" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="hardware.html" class="btn btn-neutral float-left" title="Hardware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, CoderDojo Nijmegen
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+  
+ <script type="text/javascript">
+    // https://stackoverflow.com/a/25543713/134731 for toggle example
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+<script src="_static/scratchblocks-v3.4-min.js"></script>
+<script src="_static/translations-all-v3.4.js" charset="utf8"></script>
+
+<script>
+  function parseBlocks(codeBlock) {
+    var doc
+    var docView
+    var svg
+    // Parse the source code
+    doc = scratchblocks.parse(codeBlock.innerHTML, {languages: ['en','nl']})
+
+    // // Create a DocView with your chosen style
+    docView = scratchblocks.newView(doc, {
+      style: 'scratch3', // Or 'scratch2'
+    })
+
+    // Render to an SVG
+    svg = docView.render()
+
+    // Scratch 3 is zoomed out by default, so you probably want to do the same
+    svg.style.transform = 'scale(0.675)';
+
+    // Add that SVG to your page, etc
+    svg.style.transformOrigin = '0 0';
+    return svg
+  }
+  var codeblocks = document.getElementsByClassName("scratch")
+  var parsedBlock
+  for (i = 0; i < codeblocks.length; i++) {
+    parsedBlock = parseBlocks(codeblocks[i])
+    codeblocks[i].innerHTML = ""
+    codeblocks[i].appendChild(parsedBlock)
+  }
+
+</script>
+
+
+</body>
+</html>
